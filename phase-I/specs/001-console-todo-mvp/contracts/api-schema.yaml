@@ -1,0 +1,52 @@
+# Internal Service Contract (Python Interface)
+# Since this is an in-memory CLI app, the "API" is the public methods of the Service class.
+# Represented here in pseudo-OpenAPI style for clarity on inputs/outputs.
+
+openapi: 3.0.0
+info:
+  title: TodoService Interface
+  version: 1.0.0
+  description: Public interface for the business logic layer.
+
+paths:
+  add_todo:
+    description: Create a new todo item
+    input:
+      title: string (required)
+    output:
+      TodoItem: object
+      
+  list_todos:
+    description: Retrieve all todos
+    input:
+      filter: string (optional, e.g., "all", "completed", "pending")
+    output:
+      todos: List[TodoItem]
+      
+  update_todo:
+    description: Update text of existing todo
+    input:
+      id: integer (required)
+      title: string (required)
+    output:
+      TodoItem: object (updated)
+    errors:
+      TodoNotFound: id does not exist
+      
+  toggle_todo:
+    description: Toggle completion status
+    input:
+      id: integer (required)
+    output:
+      TodoItem: object (updated)
+    errors:
+      TodoNotFound: id does not exist
+      
+  delete_todo:
+    description: Remove a todo
+    input:
+      id: integer (required)
+    output:
+      success: boolean
+    errors:
+      TodoNotFound: id does not exist
