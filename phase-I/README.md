@@ -25,8 +25,8 @@ This project demonstrates a 5-phase evolution:
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd todo-app/phase-I
+   git clone https://github.com/MehmaRashid123/Hackathon-II.git
+   cd phase-I
    ```
 
 2. **Initialize Environment** (Optional but recommended):
